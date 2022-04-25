@@ -1,0 +1,1214 @@
+vigna@vigna-VirtualBox:~$ git --version
+git version 2.25.1
+vigna@vigna-VirtualBox:~$ git
+usage: git [--version] [--help] [-C <path>] [-c <name>=<value>]
+           [--exec-path[=<path>]] [--html-path] [--man-path] [--info-path]
+           [-p | --paginate | -P | --no-pager] [--no-replace-objects] [--bare]
+           [--git-dir=<path>] [--work-tree=<path>] [--namespace=<name>]
+           <command> [<args>]
+
+These are common Git commands used in various situations:
+
+start a working area (see also: git help tutorial)
+   clone             Clone a repository into a new directory
+   init              Create an empty Git repository or reinitialize an existing one
+
+work on the current change (see also: git help everyday)
+   add               Add file contents to the index
+   mv                Move or rename a file, a directory, or a symlink
+   restore           Restore working tree files
+   rm                Remove files from the working tree and from the index
+   sparse-checkout   Initialize and modify the sparse-checkout
+
+examine the history and state (see also: git help revisions)
+   bisect            Use binary search to find the commit that introduced a bug
+   diff              Show changes between commits, commit and working tree, etc
+   grep              Print lines matching a pattern
+   log               Show commit logs
+   show              Show various types of objects
+   status            Show the working tree status
+
+grow, mark and tweak your common history
+   branch            List, create, or delete branches
+   commit            Record changes to the repository
+   merge             Join two or more development histories together
+   rebase            Reapply commits on top of another base tip
+   reset             Reset current HEAD to the specified state
+   switch            Switch branches
+   tag               Create, list, delete or verify a tag object signed with GPG
+
+collaborate (see also: git help workflows)
+   fetch             Download objects and refs from another repository
+   pull              Fetch from and integrate with another repository or a local branch
+   push              Update remote refs along with associated objects
+
+'git help -a' and 'git help -g' list available subcommands and some
+concept guides. See 'git help <command>' or 'git help <concept>'
+to read about a specific subcommand or concept.
+See 'git help git' for an overview of the system.
+vigna@vigna-VirtualBox:~$ git --version
+git version 2.25.1
+vigna@vigna-VirtualBox:~$ git config --global user.name "420217student"
+vigna@vigna-VirtualBox:~$ git config --global user.email "420217@student.nitandhra.ac.in"
+vigna@vigna-VirtualBox:~$ git config --global --list
+user.name=420217student
+user.email=420217@student.nitandhra.ac.in
+vigna@vigna-VirtualBox:~$ ls -al ~/.ssh
+total 12
+drwx------  2 vigna vigna 4096 Apr 25 07:50 .
+drwxr-xr-x 21 vigna vigna 4096 Apr 25 08:44 ..
+-rw-r--r--  1 vigna vigna  444 Apr 25 07:50 known_hosts
+vigna@vigna-VirtualBox:~$ ssh-keygen -t ed25519 -C "420217@student.nitandhra.ac.in"
+Generating public/private ed25519 key pair.
+Enter file in which to save the key (/home/vigna/.ssh/id_ed25519): 
+Enter passphrase (empty for no passphrase): 
+Enter same passphrase again: 
+Your identification has been saved in /home/vigna/.ssh/id_ed25519
+Your public key has been saved in /home/vigna/.ssh/id_ed25519.pub
+The key fingerprint is:
+SHA256:177vqNpopNMTEYVp33DKeAeD4vEjD+l3ytTBLfUJILs 420217@student.nitandhra.ac.in
+The key's randomart image is:
++--[ED25519 256]--+
+|        .=o.     |
+|      o *o+ +    |
+|     . *.* X o . |
+|      = =.O.+ o  |
+|     . +E=.+.    |
+|      . *.o.     |
+|       B +  .    |
+|      o *o   o   |
+|       oooo.ooo  |
++----[SHA256]-----+
+vigna@vigna-VirtualBox:~$ eval "$(ssh-agent -s)"
+Agent pid 2307
+vigna@vigna-VirtualBox:~$ ssh-add ~/.ssh/id_ed25519
+Enter passphrase for /home/vigna/.ssh/id_ed25519: 
+Identity added: /home/vigna/.ssh/id_ed25519 (420217@student.nitandhra.ac.in)
+vigna@vigna-VirtualBox:~$ pwd
+/home/vigna
+vigna@vigna-VirtualBox:~$ cat ~/.ssh/id_ed25519.pub
+ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKX5QhnjRAjVAjKWNk16DQI/ZbabJdkuM9oHCzNQWMQg 420217@student.nitandhra.ac.in
+vigna@vigna-VirtualBox:~$ ssh -T git@github.com
+Hi 420217student! You've successfully authenticated, but GitHub does not provide shell access.
+vigna@vigna-VirtualBox:~$ cd Desktop
+vigna@vigna-VirtualBox:~/Desktop$ ld
+ld: no input files
+vigna@vigna-VirtualBox:~/Desktop$ ls
+1  1.c  mid  new  temp
+vigna@vigna-VirtualBox:~/Desktop$ cd mid
+vigna@vigna-VirtualBox:~/Desktop/mid$ ls
+a         eleven.sh  first.sh  nine.sh    seven.sh  ten.sh
+eight.sh  fifth.sh   forth.sh  second.sh  sixth.sh  third.sh
+vigna@vigna-VirtualBox:~/Desktop/mid$ touch readme.md
+vigna@vigna-VirtualBox:~/Desktop/mid$ git init
+Initialized empty Git repository in /home/vigna/Desktop/mid/.git/
+vigna@vigna-VirtualBox:~/Desktop/mid$ git add.
+git: 'add.' is not a git command. See 'git --help'.
+
+The most similar command is
+	add
+vigna@vigna-VirtualBox:~/Desktop/mid$ git add .
+vigna@vigna-VirtualBox:~/Desktop/mid$ git status
+On branch master
+
+No commits yet
+
+Changes to be committed:
+  (use "git rm --cached <file>..." to unstage)
+	new file:   a
+	new file:   eight.sh
+	new file:   eleven.sh
+	new file:   fifth.sh
+	new file:   first.sh
+	new file:   forth.sh
+	new file:   nine.sh
+	new file:   readme.md
+	new file:   second.sh
+	new file:   seven.sh
+	new file:   sixth.sh
+	new file:   ten.sh
+	new file:   third.sh
+
+vigna@vigna-VirtualBox:~/Desktop/mid$ >one.c
+vigna@vigna-VirtualBox:~/Desktop/mid$ git status
+On branch master
+
+No commits yet
+
+Changes to be committed:
+  (use "git rm --cached <file>..." to unstage)
+	new file:   a
+	new file:   eight.sh
+	new file:   eleven.sh
+	new file:   fifth.sh
+	new file:   first.sh
+	new file:   forth.sh
+	new file:   nine.sh
+	new file:   readme.md
+	new file:   second.sh
+	new file:   seven.sh
+	new file:   sixth.sh
+	new file:   ten.sh
+	new file:   third.sh
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	one.c
+
+vigna@vigna-VirtualBox:~/Desktop/mid$ git add one.c
+vigna@vigna-VirtualBox:~/Desktop/mid$ git status
+On branch master
+
+No commits yet
+
+Changes to be committed:
+  (use "git rm --cached <file>..." to unstage)
+	new file:   a
+	new file:   eight.sh
+	new file:   eleven.sh
+	new file:   fifth.sh
+	new file:   first.sh
+	new file:   forth.sh
+	new file:   nine.sh
+	new file:   one.c
+	new file:   readme.md
+	new file:   second.sh
+	new file:   seven.sh
+	new file:   sixth.sh
+	new file:   ten.sh
+	new file:   third.sh
+
+vigna@vigna-VirtualBox:~/Desktop/mid$ git commit -m "First commited one"
+[master (root-commit) dd948c0] First commited one
+ 14 files changed, 95 insertions(+)
+ create mode 100644 a
+ create mode 100755 eight.sh
+ create mode 100755 eleven.sh
+ create mode 100755 fifth.sh
+ create mode 100755 first.sh
+ create mode 100755 forth.sh
+ create mode 100755 nine.sh
+ create mode 100644 one.c
+ create mode 100644 readme.md
+ create mode 100755 second.sh
+ create mode 100755 seven.sh
+ create mode 100755 sixth.sh
+ create mode 100755 ten.sh
+ create mode 100755 third.sh
+vigna@vigna-VirtualBox:~/Desktop/mid$ git status
+On branch master
+nothing to commit, working tree clean
+vigna@vigna-VirtualBox:~/Desktop/mid$ git reset HEAD~1
+fatal: ambiguous argument 'HEAD~1': unknown revision or path not in the working tree.
+Use '--' to separate paths from revisions, like this:
+'git <command> [<revision>...] -- [<file>...]'
+vigna@vigna-VirtualBox:~/Desktop/mid$ git reset HEAD~1
+fatal: ambiguous argument 'HEAD~1': unknown revision or path not in the working tree.
+Use '--' to separate paths from revisions, like this:
+'git <command> [<revision>...] -- [<file>...]'
+vigna@vigna-VirtualBox:~/Desktop/mid$ git reset
+vigna@vigna-VirtualBox:~/Desktop/mid$ git status
+On branch master
+nothing to commit, working tree clean
+vigna@vigna-VirtualBox:~/Desktop/mid$ git add .
+vigna@vigna-VirtualBox:~/Desktop/mid$ git ststus
+git: 'ststus' is not a git command. See 'git --help'.
+
+The most similar command is
+	status
+vigna@vigna-VirtualBox:~/Desktop/mid$ git status
+On branch master
+nothing to commit, working tree clean
+vigna@vigna-VirtualBox:~/Desktop/mid$ ls
+a         eleven.sh  first.sh  nine.sh  readme.md  seven.sh  ten.sh
+eight.sh  fifth.sh   forth.sh  one.c    second.sh  sixth.sh  third.sh
+vigna@vigna-VirtualBox:~/Desktop/mid$ git init
+Reinitialized existing Git repository in /home/vigna/Desktop/mid/.git/
+vigna@vigna-VirtualBox:~/Desktop/mid$ git add .
+vigna@vigna-VirtualBox:~/Desktop/mid$ git status
+On branch master
+nothing to commit, working tree clean
+vigna@vigna-VirtualBox:~/Desktop/mid$ touch 1.c 1.cpp
+vigna@vigna-VirtualBox:~/Desktop/mid$ git status
+On branch master
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	1.c
+	1.cpp
+
+nothing added to commit but untracked files present (use "git add" to track)
+vigna@vigna-VirtualBox:~/Desktop/mid$ git revert
+usage: git revert [<options>] <commit-ish>...
+   or: git revert <subcommand>
+
+    --quit                end revert or cherry-pick sequence
+    --continue            resume revert or cherry-pick sequence
+    --abort               cancel revert or cherry-pick sequence
+    --skip                skip current commit and continue
+    --cleanup <mode>      how to strip spaces and #comments from message
+    -n, --no-commit       don't automatically commit
+    -e, --edit            edit the commit message
+    -s, --signoff         add Signed-off-by:
+    -m, --mainline <parent-number>
+                          select mainline parent
+    --rerere-autoupdate   update the index with reused conflict resolution if possible
+    --strategy <strategy>
+                          merge strategy
+    -X, --strategy-option <option>
+                          option for merge strategy
+    -S, --gpg-sign[=<key-id>]
+                          GPG sign commit
+
+vigna@vigna-VirtualBox:~/Desktop/mid$ git status
+On branch master
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	1.c
+	1.cpp
+
+nothing added to commit but untracked files present (use "git add" to track)
+vigna@vigna-VirtualBox:~/Desktop/mid$ git add .
+vigna@vigna-VirtualBox:~/Desktop/mid$ git status
+On branch master
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+	new file:   1.c
+	new file:   1.cpp
+
+vigna@vigna-VirtualBox:~/Desktop/mid$ git commit -m "second commit"
+[master 3054b4d] second commit
+ 2 files changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 1.c
+ create mode 100644 1.cpp
+vigna@vigna-VirtualBox:~/Desktop/mid$ git log
+commit 3054b4de82c76b9e459d091b6d63782485081509 (HEAD -> master)
+Author: 420217student <420217@student.nitandhra.ac.in>
+Date:   Mon Apr 25 09:12:48 2022 +0530
+
+    second commit
+
+commit dd948c071f9fe33144d2d1b4150081fd83dcdef9
+Author: 420217student <420217@student.nitandhra.ac.in>
+Date:   Mon Apr 25 09:05:55 2022 +0530
+
+    First commited one
+vigna@vigna-VirtualBox:~/Desktop/mid$ git remote add origin https://github.com/420217student/first.git
+vigna@vigna-VirtualBox:~/Desktop/mid$ git remote -v
+origin	https://github.com/420217student/first.git (fetch)
+origin	https://github.com/420217student/first.git (push)
+vigna@vigna-VirtualBox:~/Desktop/mid$ git push -u origin master
+Username for 'https://github.com': 420217student
+Password for 'https://420217student@github.com': 
+remote: Support for password authentication was removed on August 13, 2021. Please use a personal access token instead.
+remote: Please see https://github.blog/2020-12-15-token-authentication-requirements-for-git-operations/ for more information.
+fatal: Authentication failed for 'https://github.com/420217student/first.git/'
+vigna@vigna-VirtualBox:~/Desktop/mid$ history
+    1  sudo apt install build-essential dkms linux-headers-$(uname -r)
+    2  ls
+    3  >1.c
+    4  ls
+    5  gcc -o 1 1.c l pthread
+    6  gcc -o 1 1.c -l pthread
+    7  ./1
+    8  gcc -o 2 2.c -l pthread
+    9  ./2
+   10  gcc -o 2 2.c -l pthread
+   11  ./2
+   12  gcc -o 2 2.c -l pthread
+   13  ./2
+   14  gcc -o 2 2.c -l pthread
+   15  ./2
+   16  6 5 *
+   17  ./2
+   18  gcc -o 3a 3a.c -l pthread
+   19  ./3a
+   20  gcc -o 3b 3b.c -l pthread
+   21  ./3b
+   22  sudo -s
+   23  git clone git://github.com/mit-pdos/xv6-public.git
+   24  sudo apt install git
+   25  git clone git://github.com/mit-pdos/xv6-public.git
+   26  sudo apt install qemu
+   27  ls
+   28  cd xv6-public
+   29  ls
+   30  make
+   31  make qemu-nox
+   32  sudo -s
+   33  ls
+   34  sudo -s
+   35  ls
+   36  >t1
+   37  ls
+   38  rm t1
+   39  ls
+   40  >t1.c
+   41  ls
+   42  gcc -o t1 t1.c
+   43  ./t1
+   44  gcc -o t1 t1.c
+   45  gcc -o t1 t1.c -l pthread
+   46  ls
+   47  gcc -o t1 t1.c -l pthread
+   48  ./t1
+   49  gcc -o t1 t1.c -l pthread
+   50  ./t1
+   51  gcc -o t1 t.c -l pthread
+   52  ./t1
+   53  >t2
+   54  ls
+   55  >t2.c
+   56  ls
+   57  gcc -o t2 t2.c -l pthread
+   58  ./t2
+   59  ls
+   60  gcc -o t1 t.c -l pthread
+   61  gcc -o t1 t1.c -l pthread
+   62  ./t1
+   63  gcc -o t1 t1.c -l pthread
+   64  ./t1
+   65  ls
+   66  gcc -o t1 t1.c -l pthread
+   67  ./t1
+   68  gcc -o t1 t1.c -l pthread
+   69  ./t1
+   70  gcc -o t1 t1.c -l pthread
+   71  ./t1
+   72  gcc -o t1 t1.c -l pthread
+   73  ./t1
+   74  gcc -o t1 t1.c -l pthread
+   75  ./t1
+   76  ls
+   77  git clone git://github.com/mit-pdos/xv6-public.git
+   78  ls
+   79  cd xv6-public
+   80  ls
+   81  make
+   82  ls
+   83  12
+   84  man write
+   85  man 2 write
+   86  ls
+   87  cd Desktop
+   88  ls
+   89  >1.c
+   90  gcc -o 1 1.c
+   91  ./1
+   92  gcc -o 1 1.c
+   93  ./1
+   94  ls
+   95  gdb 1.c
+   96  cd Desktop
+   97  ls
+   98  gdb ./1
+   99  gcc -o 1 1.c
+  100  ./1
+  101  man who
+  102  who
+  103  man who
+  104  who -all
+  105  man who
+  106  who -b
+  107  man
+  108  man -d
+  109  man at
+  110  man cat
+  111  cat -b Desktop/1.c
+  112  man cat
+  113  cat -a Desktop/1.c
+  114  cat -B Desktop/1.c
+  115  cat -A Desktop/1.c
+  116  man cat
+  117  help --cat
+  118  help cat
+  119  help -cat
+  120  man help
+  121  help man
+  122  help help
+  123  help who
+  124  help -who
+  125  help --who
+  126  help who
+  127  man help
+  128  man cat
+  129  cat -e Desktop/1.c
+  130  cat -E Desktop/1.c
+  131  man cat
+  132  cat -b Desktop/1.c
+  133  cat -n Desktop/1.c
+  134  cat -s Desktop/1.c
+  135  cat Desktop/1.c
+  136  ls
+  137  cat "1.c""2.c""t2.c">"3b.c"
+  138  cat 1.c 2.c t2.c>"3b.c"
+  139  cat 3b.c
+  140  man cd
+  141  cd ~
+  142  cmp
+  143  man cmp
+  144  cmp 1.c 2.c
+  145  cmp -b 1.c 2.c
+  146  cmp -l 1.c 2.c
+  147  man cmp
+  148  cmp -l 1.c 2.c 10 20
+  149  man comm
+  150  comm 1.c 2.c
+  151  comm 1.c
+  152  cmp --help
+  153  help --man
+  154  help --cat
+  155  help --chown
+  156  chown
+  157  man --help
+  158  clear
+  159  man chmod
+  160  ls
+  161  chmod -r 1.c
+  162  chmod -w 1.c
+  163  chmod -x 1.c
+  164  chmod -r 1.c
+  165  cat>1.c
+  166  chmod -u 1.c
+  167  help --chmod
+  168  chmod --help
+  169  chmod -v 1.c
+  170  man chown
+  171  chown vigna 1.c
+  172  chown vigna 2.c
+  173  man chown
+  174  man chgrp
+  175  ls -l
+  176  ls -l *.c
+  177  chgrp hello *.c
+  178  groupadd hello
+  179  man cp
+  180  man cron
+  181  crontab -e
+  182  crontab
+  183  crontab -l
+  184  crontab -e
+  185  man cu
+  186  man cut
+  187  cut -c 4-10 3a.c
+  188  >a.txt
+  189  cut -c 4-10 3a.c
+  190  cut -c 4-10 a.txt
+  191  cut -c 4-7 a.txt
+  192  man cut
+  193  cut -b 4-7 a.txt
+  194  man date
+  195  date -I[FMT]
+  196  date -I FMT
+  197  date --iso-8601
+  198  man date
+  199  date -I FMT=date
+  200  date -I FMT="date"
+  201  date -I "date"
+  202  date -I date
+  203  touch date
+  204  date "+%D %T"
+  205  man dd
+  206  dd hello
+  207  man dd
+  208  help --dd
+  209  dd --help
+  210  qman diff
+  211  man diff
+  212  diff --help
+  213  q
+  214  diff 1.c 2.c
+  215  diff 3a.c 2.c
+  216  diff 3a.c 2.c -q
+  217  diff a.txt date.txt -q
+  218  diff -s
+  219  diff a.txt date.txt -s
+  220  man echo
+  221  x = 10
+  222  int x = 10
+  223  double x = 10
+  224  int
+  225  man finger
+  226  echo 1.c
+  227  echo ./1.c
+  228  man find
+  229  find 1.c
+  230  find 123.pdf
+  231  file . -name '123.pdf'
+  232  tree -a Downlads
+  233  file . -name '123.pdf'
+  234  file ./ -name '123.pdf'
+  235  file ./Downloads -name '123.pdf'
+  236  find 123.pdf
+  237  file . -name 123.pdf
+  238  file ./ -name 123.pdf
+  239  man kill
+  240  kill -l
+  241  kill
+  242  kill --help
+  243  kill {-l | --list[=signal] | -L | --table}
+  244  lill --table
+  245  kill --table
+  246  kill -l --table
+  247  kill -l -L --table
+  248  man lock
+  249  man ln
+  250  ln -fs -L -P t1.c Downloads
+  251  ln -P 2.c Downloads
+  252  ln -L 3a.c Downloads
+  253  ls
+  254  ls ./Downloads
+  255  man ls
+  256  ls Downloads
+  257  man ls
+  258  ls -a
+  259  ls -A
+  260  ls -i
+  261  ls -l
+  262  man lp
+  263  lp
+  264  man lp
+  265  lp --help
+  266  lp 2.c
+  267  lp -d
+  268  lp -H --2.c
+  269  lp -H 2.c
+  270  lp -d Downloads 2.c
+  271  lp -d 3.c 2.c
+  272  history
+  273  ./third.sh
+  274  ./third.sh vigna tej
+  275  ./third.sh vigna tej reddy psaduru
+  276  touch forth.sh
+  277  ./forth.sh
+  278  chmod +x forth.sh
+  279  ./forth.sh
+  280  ./forth.sh asdfgh afgbyukaeg sfbwheb
+  281  touch fifth.sh
+  282  chmod +x fifth.sh
+  283  ./fifth.sh
+  284  ./forth.sh
+  285  ./third.sh
+  286  ./second.sh
+  287  ls
+  288  ls -a
+  289  ls -l
+  290  >sixth.sh
+  291  chmod +x sixth.sh
+  292  ./sixth.sh
+  293  12344444
+  294  vigna
+  295  cd
+  296  ls
+  297  ls -a
+  298  hello
+  299  path
+  300  ls
+  301  cd Desktop
+  302  mkdir mid
+  303  cd mid
+  304  > first
+  305  first
+  306  ./first.sh
+  307  mv first first.sh
+  308  ls
+  309  ./first.sh
+  310  man chmod
+  311  ls -l
+  312  chmod +rwx first.sh
+  313  ./first.sh
+  314  date
+  315  >second
+  316  mv second second.sh
+  317  chmod +x second.sh
+  318  ./second.sh
+  319  >third.sh
+  320  chmod +x third.sh
+  321  ./third.sh
+  322  echo $$
+  323  $0
+  324  cd Desktop/mid
+  325  ls -l
+  326  ls -a
+  327  ls -l -a
+  328  touch seven.sh
+  329  chmod +x seven.sh
+  330  ./seven
+  331  ./seven.sh
+  332  ./sixth.sh
+  333  ./seventh.sh
+  334  ./seven.sh
+  335  touch eight.sh
+  336  ./eight.sh
+  337  chmod +x eight.sh
+  338  ./eight.sh
+  339  chmod +x nine.sh
+  340  ./nine
+  341  ./nine.sh
+  342  touch ten.sh
+  343  chmod +x ten.sh
+  344  ./ten.sh
+  345  wc -l
+  346  who
+  347  ./ten.sh
+  348  cd Desktop/mid
+  349  ./ten
+  350  ./ten.sh
+  351  who | wc -l
+  352  who | wc 
+  353  ./ten.sh
+  354  uptime
+  355  ./ten.sh
+  356  touch eleven.sh
+  357  chmod +x eleven.sh
+  358  ./eleven.sh
+  359  pwd
+  360  who
+  361  who > a
+  362  ./eleven.sh > a
+  363  cat users
+  364  users
+  365  cat a
+  366  ./ first.sh < a
+  367  ./first.sh < a
+  368  ./first.sh
+  369  echo `a*b`
+  370  ls -l
+  371  ls -l t??n
+  372  ls -l t??n.sh
+  373  ls -l t*h
+  374  ls -l t[a-e]*h
+  375  ls -l t[hir]*h
+  376  ./first.sh
+  377  pwd
+  378  cd Desktop
+  379  ld
+  380  ls
+  381  ls mid
+  382  ls | cpio -ov > mid
+  383  cd mid
+  384  ls | cpio -ov > mid
+  385  ls | cpio -ov > /dev/fd0
+  386  ls
+  387  ls| cpio -ov > /home/linux/compress.cpio
+  388  ls| cpio -ov > /home/linux/first.sh
+  389  ls| cpio -ov > first.sh
+  390  ls | cpio -ov > /dev/fdo
+  391  ls | cpio -ov > ./
+  392  ls | cpio -ov > ./first.sh
+  393  cpio -o <first.sh> archive
+  394  ls
+  395  ls -l
+  396  chmod -rwx archive
+  397  chmod +rwx archive
+  398  man cpio
+  399  ls | cpio -ov < hello.cpio
+  400  ls | cpio -ov > hello.cpio
+  401  ls
+  402  cpio -iv < hello.cpio
+  403  ls
+  404  cpio -iv < hello.cpio
+  405  cd ../
+  406  cpio -iv < mid/hello.cpio
+  407  man cpio
+  408  ls
+  409  cd mid
+  410  ls
+  411  cd hello.cpio
+  412  cpio -i < hello.cpio
+  413  ls | cpio -i < hello.cpio
+  414  cd ../
+  415  ls | cpio -i < mid/hello.cpio
+  416  ls
+  417  ls | cpio -iv < mid/hello.cpio
+  418  cd mid
+  419  ls
+  420  rm hello.cpio
+  421  ls
+  422  cpio -o > first.asd
+  423  ls
+  424  cpio -ov > first.asd
+  425  rm first.asd
+  426  ls
+  427  cpio -ov > comp.cpio
+  428  ls | cpio -ov > comp.cpio
+  429  rm comp.cpio
+  430  ls
+  431  ls | cpio -ov > comp.cpio
+  432  ls | cpio -iv < comp.cpio
+  433  ls
+  434  cpio -o first.sh > first.cpio
+  435  rm first.cpio
+  436  ls
+  437  pwd
+  438  cd ../
+  439  ls
+  440  cd tem
+  441  mkdir temp
+  442  ls
+  443  cd mid
+  444  ls
+  445  ls | cpio -ov > /home/vigna/Desktop/temp/fiw.cpio
+  446  ls
+  447  cd ../
+  448  ls
+  449  mkdir new
+  450  ls
+  451  cd new
+  452  ls | cpio -iv < /home/vigna/Desktop/temp/fiw.cpio
+  453  ls
+  454  cd ,,.
+  455  cd ../
+  456  ls
+  457  rmdir new
+  458  rmdir -r new
+  459  rmdir --help
+  460  man rmdir
+  461  rmdir --ignore-fail-on-non-empty new
+  462  ls
+  463  mkdir new
+  464  ls
+  465  cd new
+  466  ls
+  467  cd ../mid
+  468  ls | cpio -ov > /home/vigna/new/hello.cpio
+  469  ls | cpio -ov > /home/vigna/Desktop/new/hello.cpio
+  470  ls
+  471  cd ../new
+  472  ls
+  473  cd ../temp
+  474  ls
+  475  rm fiw.cpio
+  476  ls
+  477  cpio -iv < /home/vigna/Desktop/new/hello.cpio
+  478  ls
+  479  cd temp
+  480  cd ../mid
+  481  ls
+  482  find . -iname "*.sh" | cpio -ov > /home/vigna/Desktop/temp/hello.cpio
+  483  ls
+  484  cd ../
+  485  ls
+  486  ls mid
+  487  ls mid | cpio -p /home/vigna/Desktop/new < ls
+  488  ls new
+  489  ls temp
+  490  cd temp
+  491  cpio -itv < hello.cpio
+  492  cpio -itv < hello.temp
+  493  cpio -itv < hello.cpio
+  494  cpio -itrv < hello.cpio
+  495  cpio -itvr < hello.cpio
+  496  cd ../
+  497  ls
+  498  ls mid
+  499  ls temp
+  500  ls new
+  501  tar -c ./new ./mid
+  502  tar -cf ./new ./mid
+  503  tar -cvf ./new ./mid
+  504  tar -cvf ./new/file.tar ./mid
+  505  cd new
+  506  ls
+  507  rm file.tar
+  508  cd ../
+  509  tar -cvf /home/vigna/Desktop/new/hello.tar /home/vigna/Desktop/mid/*
+  510  ls
+  511  cd temp
+  512  tar -xvf /home/vigna/Desktop/new/hello.tar .
+  513  tar -xvf /home/vigna/Desktop/new/hello.tar
+  514  tar -tvf /home/vigna/Desktop/new/hello.tar
+  515  history
+  516  tar -tvf /home/vigna/Desktop/new/hello.tar | find .-iname "*.sh"
+  517  tar -tvf /home/vigna/Desktop/new/hello.tar | find . -iname "*.sh"
+  518  tar -tvf /home/vigna/Desktop/new/hello.tar | find . -iname "*-rw*"
+  519  tar -tvf /home/vigna/Desktop/new/hello.tar | find . -iname "*w*"
+  520  tar -tvf /home/vigna/Desktop/new/hello.tar | find . -iname "*"
+  521  tar -tvf /home/vigna/Desktop/new/hello.tar
+  522  cd Desktop/new
+  523  ls
+  524  >MakeFile
+  525  make
+  526  mv MakeFile Makefile
+  527  make
+  528  ls
+  529  make
+  530  git --version
+  531  git
+  532  git --version
+  533  git config --global user.name "420217student"
+  534  git config --global user.email "420217@student.nitandhra.ac.in"
+  535  git config --global --list
+  536  ls -al ~/.ssh
+  537  ssh-keygen -t ed25519 -C "420217@student.nitandhra.ac.in"
+  538  eval "$(ssh-agent -s)"
+  539  ssh-add ~/.ssh/id_ed25519
+  540  pwd
+  541  cat ~/.ssh/id_ed25519.pub
+  542  ssh -T git@github.com
+  543  cd Desktop
+  544  ld
+  545  ls
+  546  cd mid
+  547  ls
+  548  touch readme.md
+  549  git init
+  550  git add.
+  551  git add .
+  552  git status
+  553  >one.c
+  554  git status
+  555  git add one.c
+  556  git status
+  557  git commit -m "First commited one"
+  558  git status
+  559  git reset HEAD~1
+  560  git reset
+  561  git status
+  562  git add .
+  563  git ststus
+  564  git status
+  565  ls
+  566  git init
+  567  git add .
+  568  git status
+  569  touch 1.c 1.cpp
+  570  git status
+  571  git revert
+  572  git status
+  573  git add .
+  574  git status
+  575  git commit -m "second commit"
+  576  git log
+  577  git remote add origin https://github.com/420217student/first.git
+  578  git remote -v
+  579  git push -u origin master
+  580  history
+vigna@vigna-VirtualBox:~/Desktop/mid$ git remote set-url origin https://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@github.com/420217student/first.git
+vigna@vigna-VirtualBox:~/Desktop/mid$ git push -u origin main
+error: src refspec main does not match any
+error: failed to push some refs to 'https://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@github.com/420217student/first.git'
+vigna@vigna-VirtualBox:~/Desktop/mid$ git push -u origin master
+Enumerating objects: 17, done.
+Counting objects: 100% (17/17), done.
+Delta compression using up to 3 threads
+Compressing objects: 100% (15/15), done.
+Writing objects: 100% (17/17), 1.99 KiB | 291.00 KiB/s, done.
+Total 17 (delta 8), reused 0 (delta 0)
+remote: Resolving deltas: 100% (8/8), done.
+To https://github.com/420217student/first.git
+ * [new branch]      master -> master
+Branch 'master' set up to track remote branch 'master' from 'origin'.
+vigna@vigna-VirtualBox:~/Desktop/mid$ git remote -v
+origin	https://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@github.com/420217student/first.git (fetch)
+origin	https://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@github.com/420217student/first.git (push)
+vigna@vigna-VirtualBox:~/Desktop/mid$ git status
+On branch master
+Your branch is up to date with 'origin/master'.
+
+nothing to commit, working tree clean
+vigna@vigna-VirtualBox:~/Desktop/mid$ git revert
+usage: git revert [<options>] <commit-ish>...
+   or: git revert <subcommand>
+
+    --quit                end revert or cherry-pick sequence
+    --continue            resume revert or cherry-pick sequence
+    --abort               cancel revert or cherry-pick sequence
+    --skip                skip current commit and continue
+    --cleanup <mode>      how to strip spaces and #comments from message
+    -n, --no-commit       don't automatically commit
+    -e, --edit            edit the commit message
+    -s, --signoff         add Signed-off-by:
+    -m, --mainline <parent-number>
+                          select mainline parent
+    --rerere-autoupdate   update the index with reused conflict resolution if possible
+    --strategy <strategy>
+                          merge strategy
+    -X, --strategy-option <option>
+                          option for merge strategy
+    -S, --gpg-sign[=<key-id>]
+                          GPG sign commit
+
+vigna@vigna-VirtualBox:~/Desktop/mid$ git log
+commit 3054b4de82c76b9e459d091b6d63782485081509 (HEAD -> master, origin/master)
+Author: 420217student <420217@student.nitandhra.ac.in>
+Date:   Mon Apr 25 09:12:48 2022 +0530
+
+    second commit
+
+commit dd948c071f9fe33144d2d1b4150081fd83dcdef9
+Author: 420217student <420217@student.nitandhra.ac.in>
+Date:   Mon Apr 25 09:05:55 2022 +0530
+
+    First commited one
+vigna@vigna-VirtualBox:~/Desktop/mid$ git diff
+diff --git a/1.c b/1.c
+index e69de29..ad466d3 100644
+--- a/1.c
++++ b/1.c
+@@ -0,0 +1,3 @@
++1eh
++rehaaerh
++hsr
+vigna@vigna-VirtualBox:~/Desktop/mid$ git diff
+diff --git a/1.c b/1.c
+index e69de29..ad466d3 100644
+--- a/1.c
++++ b/1.c
+@@ -0,0 +1,3 @@
++1eh
++rehaaerh
++hsr
+diff --git a/1.cpp b/1.cpp
+index e69de29..7f3822f 100644
+--- a/1.cpp
++++ b/1.cpp
+@@ -0,0 +1,3 @@
++asdfsdh
++sftsfg
++fdhsgdh
+vigna@vigna-VirtualBox:~/Desktop/mid$ git add .
+vigna@vigna-VirtualBox:~/Desktop/mid$ git log
+commit 3054b4de82c76b9e459d091b6d63782485081509 (HEAD -> master, origin/master)
+Author: 420217student <420217@student.nitandhra.ac.in>
+Date:   Mon Apr 25 09:12:48 2022 +0530
+
+    second commit
+
+commit dd948c071f9fe33144d2d1b4150081fd83dcdef9
+Author: 420217student <420217@student.nitandhra.ac.in>
+Date:   Mon Apr 25 09:05:55 2022 +0530
+
+    First commited one
+vigna@vigna-VirtualBox:~/Desktop/mid$ git status
+On branch master
+Your branch is up to date with 'origin/master'.
+
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+	modified:   1.c
+	modified:   1.cpp
+
+vigna@vigna-VirtualBox:~/Desktop/mid$ git push -u origin master
+Branch 'master' set up to track remote branch 'master' from 'origin'.
+Everything up-to-date
+vigna@vigna-VirtualBox:~/Desktop/mid$ git status
+On branch master
+Your branch is up to date with 'origin/master'.
+
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+	modified:   1.c
+	modified:   1.cpp
+
+vigna@vigna-VirtualBox:~/Desktop/mid$ git push -u origin master
+Branch 'master' set up to track remote branch 'master' from 'origin'.
+Everything up-to-date
+vigna@vigna-VirtualBox:~/Desktop/mid$ git commit -m "third"
+[master 6e79965] third
+ 2 files changed, 6 insertions(+)
+vigna@vigna-VirtualBox:~/Desktop/mid$ git push -u origin master
+Enumerating objects: 7, done.
+Counting objects: 100% (6/6), done.
+Delta compression using up to 3 threads
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (4/4), 338 bytes | 338.00 KiB/s, done.
+Total 4 (delta 1), reused 0 (delta 0)
+remote: Resolving deltas: 100% (1/1), completed with 1 local object.
+To https://github.com/420217student/first.git
+   3054b4d..6e79965  master -> master
+Branch 'master' set up to track remote branch 'master' from 'origin'.
+vigna@vigna-VirtualBox:~/Desktop/mid$ git diff
+diff --git a/a b/a
+index b4de394..13a4a0f 100644
+--- a/a
++++ b/a
+@@ -1 +1,5 @@
+-11
++1
++123
++654
++vigna
++
+vigna@vigna-VirtualBox:~/Desktop/mid$ git log
+commit 6e79965a60cf695bda657f9bb9cce9abb6d2d317 (HEAD -> master, origin/master)
+Author: 420217student <420217@student.nitandhra.ac.in>
+Date:   Mon Apr 25 09:35:23 2022 +0530
+
+    third
+
+commit 3054b4de82c76b9e459d091b6d63782485081509
+Author: 420217student <420217@student.nitandhra.ac.in>
+Date:   Mon Apr 25 09:12:48 2022 +0530
+
+    second commit
+
+commit dd948c071f9fe33144d2d1b4150081fd83dcdef9
+Author: 420217student <420217@student.nitandhra.ac.in>
+Date:   Mon Apr 25 09:05:55 2022 +0530
+
+    First commited one
+vigna@vigna-VirtualBox:~/Desktop/mid$ git status
+On branch master
+Your branch is up to date with 'origin/master'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   a
+
+no changes added to commit (use "git add" and/or "git commit -a")
+vigna@vigna-VirtualBox:~/Desktop/mid$ git add .
+vigna@vigna-VirtualBox:~/Desktop/mid$ git status
+On branch master
+Your branch is up to date with 'origin/master'.
+
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+	modified:   a
+
+vigna@vigna-VirtualBox:~/Desktop/mid$ git commit -m "forth commit"
+[master 566de84] forth commit
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+vigna@vigna-VirtualBox:~/Desktop/mid$ git push -u origin master1
+error: src refspec master1 does not match any
+error: failed to push some refs to 'https://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@github.com/420217student/first.git'
+vigna@vigna-VirtualBox:~/Desktop/mid$ git push -u origin master
+Enumerating objects: 5, done.
+Counting objects: 100% (5/5), done.
+Delta compression using up to 3 threads
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (3/3), 277 bytes | 277.00 KiB/s, done.
+Total 3 (delta 1), reused 0 (delta 0)
+remote: Resolving deltas: 100% (1/1), completed with 1 local object.
+To https://github.com/420217student/first.git
+   6e79965..566de84  master -> master
+Branch 'master' set up to track remote branch 'master' from 'origin'.
+vigna@vigna-VirtualBox:~/Desktop/mid$ cd ../new
+vigna@vigna-VirtualBox:~/Desktop/new$ ls
+1.c  blah.c  blah.o  hello  Makefile
+vigna@vigna-VirtualBox:~/Desktop/new$ mkdir clonedd
+vigna@vigna-VirtualBox:~/Desktop/new$ cd clonedd
+vigna@vigna-VirtualBox:~/Desktop/new/clonedd$ git clone https://github.com/420217student/first
+Cloning into 'first'...
+remote: Enumerating objects: 24, done.
+remote: Counting objects: 100% (24/24), done.
+remote: Compressing objects: 100% (10/10), done.
+remote: Total 24 (delta 10), reused 23 (delta 9), pack-reused 0
+Unpacking objects: 100% (24/24), 2.49 KiB | 82.00 KiB/s, done.
+vigna@vigna-VirtualBox:~/Desktop/new/clonedd$ ld
+ld: no input files
+vigna@vigna-VirtualBox:~/Desktop/new/clonedd$ ls
+first
+vigna@vigna-VirtualBox:~/Desktop/new/clonedd$ rm first
+rm: cannot remove 'first': Is a directory
+vigna@vigna-VirtualBox:~/Desktop/new/clonedd$ cd first
+vigna@vigna-VirtualBox:~/Desktop/new/clonedd/first$ rm .
+rm: cannot remove '.': Is a directory
+vigna@vigna-VirtualBox:~/Desktop/new/clonedd/first$ ls | rm 
+rm: missing operand
+Try 'rm --help' for more information.
+vigna@vigna-VirtualBox:~/Desktop/new/clonedd/first$ ls | rm .
+rm: cannot remove '.': Is a directory
+vigna@vigna-VirtualBox:~/Desktop/new/clonedd/first$ ls | rm <
+bash: syntax error near unexpected token `newline'
+vigna@vigna-VirtualBox:~/Desktop/new/clonedd/first$ cd ../
+vigna@vigna-VirtualBox:~/Desktop/new/clonedd$ git fetch
+fatal: not a git repository (or any of the parent directories): .git
+vigna@vigna-VirtualBox:~/Desktop/new/clonedd$ git fetch https://github.com/420217student/first
+fatal: not a git repository (or any of the parent directories): .git
+vigna@vigna-VirtualBox:~/Desktop/new/clonedd$ git clone https://github.com/420217student/first
+Cloning into 'first'...
+remote: Enumerating objects: 24, done.
+remote: Counting objects: 100% (24/24), done.
+remote: Compressing objects: 100% (10/10), done.
+remote: Total 24 (delta 10), reused 23 (delta 9), pack-reused 0
+Unpacking objects: 100% (24/24), 2.49 KiB | 848.00 KiB/s, done.
+vigna@vigna-VirtualBox:~/Desktop/new/clonedd$ git fetch https://github.com/420217student/first
+fatal: not a git repository (or any of the parent directories): .git
+vigna@vigna-VirtualBox:~/Desktop/new/clonedd$ git fetch -v
+fatal: not a git repository (or any of the parent directories): .git
+vigna@vigna-VirtualBox:~/Desktop/new/clonedd$ git fetch https://github.com/420217student/first firstfetch
+fatal: not a git repository (or any of the parent directories): .git
+vigna@vigna-VirtualBox:~/Desktop/new/clonedd$ cd ../../
+vigna@vigna-VirtualBox:~/Desktop$ cd mid
+vigna@vigna-VirtualBox:~/Desktop/mid$ ls
+1.c    a         eleven.sh  first.sh  nine.sh  readme.md  seven.sh  ten.sh
+1.cpp  eight.sh  fifth.sh   forth.sh  one.c    second.sh  sixth.sh  third.sh
+vigna@vigna-VirtualBox:~/Desktop/mid$ git fetch
+vigna@vigna-VirtualBox:~/Desktop/mid$ ls
+1.c    a         eleven.sh  first.sh  nine.sh  readme.md  seven.sh  ten.sh
+1.cpp  eight.sh  fifth.sh   forth.sh  one.c    second.sh  sixth.sh  third.sh
+vigna@vigna-VirtualBox:~/Desktop/mid$ git status
+On branch master
+Your branch is up to date with 'origin/master'.
+
+nothing to commit, working tree clean
+vigna@vigna-VirtualBox:~/Desktop/mid$ git merge
+Already up to date.
+vigna@vigna-VirtualBox:~/Desktop/mid$ git status
+On branch master
+Your branch is up to date with 'origin/master'.
+
+nothing to commit, working tree clean
+vigna@vigna-VirtualBox:~/Desktop/mid$ git fetch
+remote: Enumerating objects: 5, done.
+remote: Counting objects: 100% (5/5), done.
+remote: Compressing objects: 100% (2/2), done.
+remote: Total 3 (delta 1), reused 0 (delta 0), pack-reused 0
+Unpacking objects: 100% (3/3), 658 bytes | 658.00 KiB/s, done.
+From https://github.com/420217student/first
+   566de84..329341d  master     -> origin/master
+vigna@vigna-VirtualBox:~/Desktop/mid$ git status
+On branch master
+Your branch is behind 'origin/master' by 1 commit, and can be fast-forwarded.
+  (use "git pull" to update your local branch)
+
+nothing to commit, working tree clean
+vigna@vigna-VirtualBox:~/Desktop/mid$ git diff
+vigna@vigna-VirtualBox:~/Desktop/mid$ git add.
+git: 'add.' is not a git command. See 'git --help'.
+
+The most similar command is
+	add
+vigna@vigna-VirtualBox:~/Desktop/mid$ git merge
+Updating 566de84..329341d
+Fast-forward
+ 1.cpp | 5 ++---
+ 1 file changed, 2 insertions(+), 3 deletions(-)
+vigna@vigna-VirtualBox:~/Desktop/mid$ git diff
+diff --git a/1.c b/1.c
+index ad466d3..53c5fdf 100644
+--- a/1.c
++++ b/1.c
+@@ -1,3 +1 @@
+-1eh
+-rehaaerh
+-hsr
++#include <stdio.h>
+vigna@vigna-VirtualBox:~/Desktop/mid$ git pull
+Already up to date.
+vigna@vigna-VirtualBox:~/Desktop/mid$ git diff
+diff --git a/1.c b/1.c
+index ad466d3..53c5fdf 100644
+--- a/1.c
++++ b/1.c
+@@ -1,3 +1 @@
+-1eh
+-rehaaerh
+-hsr
++#include <stdio.h>
+vigna@vigna-VirtualBox:~/Desktop/mid$ git fetch
+vigna@vigna-VirtualBox:~/Desktop/mid$ git merge
+Already up to date.
+vigna@vigna-VirtualBox:~/Desktop/mid$ git diff
+diff --git a/1.c b/1.c
+index ad466d3..53c5fdf 100644
+--- a/1.c
++++ b/1.c
+@@ -1,3 +1 @@
+-1eh
+-rehaaerh
+-hsr
++#include <stdio.h>
+vigna@vigna-VirtualBox:~/Desktop/mid$ 
+
